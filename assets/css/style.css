@@ -219,6 +219,7 @@ img{
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+    transition: .5s;
 }
 
 .nav__close{
@@ -459,6 +460,7 @@ img{
 
 .footer__link:hover{
     color: var(--cyan-color);
+    transition: .5s;
 }
 
 .footer__form{
@@ -499,6 +501,7 @@ img{
 .footer__social-link:hover{
     background-color: var(--black-color);
     text-align: center;
+    transition: .5s;
 }
 
 .footer__copy-link{
