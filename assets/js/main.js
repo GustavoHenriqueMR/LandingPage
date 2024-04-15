@@ -76,11 +76,11 @@ const sr = ScrollReveal({
     duration: 2500,
 })
 
-sr.reveal('.home__img',{distance:'100px', delay:400})
-sr.reveal('.home__title',{delay:1000})
+sr.reveal('.home__img, .about__card',{distance:'100px', delay:400})
+sr.reveal('.home__title, .about__data',{delay:1000})
 sr.reveal('.home__subtitle',{delay:1200})
 sr.reveal('.home__title-description,.home__description',{delay:1500})
 sr.reveal('.home__buttom',{origin:'left',distance:'60%', delay:1600})
 sr.reveal('.specs__data', {origin:'left', interval:100, delay:400})
 sr.reveal('.specs__img',{origin:'right', delay:700})
-sr.reveal('.footer__logo, .footer__content, .footer__copy',{origin:'top',delay:200,interval:100})
+sr.reveal('.footer__logo, .footer__content, .footer__copy, .specs__t',{origin:'top',delay:200,interval:100})

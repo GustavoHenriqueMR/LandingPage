@@ -569,7 +569,7 @@ img{
 
     .home__img{
         width: 100%;
-        top: -1rem;
+        top: 0.4rem;
     }
     .home__title{
         top: -4rem;
@@ -587,7 +587,6 @@ img{
     }
 }
 
-/* For medium devices */
 @media screen and (min-width: 576px){
     .home__container{
         grid-template-columns: .8fr 1fr;
@@ -596,7 +595,7 @@ img{
         padding-top: 2rem;
     }
     .home__img{
-        top: -3rem;
+        top: -2rem;
         right: -7rem;
     }
 
