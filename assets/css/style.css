@@ -23,7 +23,9 @@
     --gradient-card: linear-gradient(180deg,
                                 rgb(18, 17, 17),
                                 hsla(194, 80%, 50%));
-
+    --gradient-color: linear-gradient(90deg,
+                                hsl(23, 4%, 28%) 0%,
+                                hsl(23, 4%, 8%) 100%);
   
 /*========== Font and typography ==========*/
     --body-font: "Sora", sans-serif;
@@ -254,7 +256,7 @@ img{
     right: 0rem;
     animation: float-prox 4s ease-in-out infinite;
 }
-/*=============== Animation gprox ===============*/
+/* Animation gprox */
 @keyframes float-prox{
     0%{
         transform: translateY(.5rem);
@@ -428,7 +430,42 @@ img{
     top: 5rem;
     right: -4rem;
 }
+/*=============== MODELS ===============*/
+.models__container{
+    padding-top: 2rem;
+}
 
+.models__title{
+    margin-top: 4rem;
+}
+
+.models__article{
+    width: 420px;
+    display: grid;
+    justify-items: center;
+    filter: blur(8px);
+    scale: .8;
+    transition: filter .3s, scale .3s;
+}
+
+.models__img{
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.models_model{
+    background: var(--gradient-color);
+    padding: .5rem 1.5rem;
+    border-radius: 4rem;
+    color:var(--white-color);
+    cursor: pointer;
+}
+/* Swiper class */
+.swiper-slide-active,
+.swiper-slide-duplicate-active{
+    filter: blur(0);
+    scale: 1;
+}
 /*=============== FOOTER ===============*/
 .footer__container{
     display: grid;
@@ -581,10 +618,12 @@ img{
     .home__description{
         font-size: var(--small-font-size);
     }
+
     .specs__img{
         width: 90%;
         top: 8.3rem;
     }
+
 }
 
 @media screen and (min-width: 576px){
