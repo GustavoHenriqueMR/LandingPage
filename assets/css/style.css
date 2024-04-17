@@ -8,7 +8,6 @@
 /*========== Colors ==========*/
     --hue-color: 206;
     --black-color: hsl(var(--hue-color), 4%, 4%);
-    --black-color-alt: hsl(var(--hue-color), 4%, 8%);
     --title-color: hsl(var(--hue-color), 4%, 95%);
     --text-color: hsl(var(--hue-color), 4%, 75%);
     --text-color-light: hsl(var(--hue-color), 4%, 65%);
@@ -322,7 +321,7 @@ img{
 }
 
 .button:hover{
-    background-color: var(--black-color-alt);
+    background-color: var(--cyan-color);
 }
 
 .button__icon{
@@ -454,7 +453,6 @@ img{
 }
 
 .models_model{
-    background: var(--gradient-color);
     padding: .5rem 1.5rem;
     border-radius: 4rem;
     color:var(--white-color);
@@ -536,7 +534,7 @@ img{
 }
 
 .footer__social-link:hover{
-    background-color: var(--black-color);
+    background-color: var(--cyan-color);
     text-align: center;
     transition: .5s;
 }
@@ -549,6 +547,10 @@ img{
 .footer__copy{
     text-align: center;
     margin-top: 5rem;
+}
+
+.footter__contacts{
+    margin-right: 1rem;
 }
 /*=============== SCROLL UP ===============*/
 
@@ -570,7 +572,7 @@ img{
 }
 
 .scrollup:hover{
-    background-color: var(--black-color);
+    background-color: var(--cyan-color);
     opacity: 1;
 }
 /*=============== SHOW SCROLL UP ===============*/
