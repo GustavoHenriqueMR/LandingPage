@@ -346,6 +346,7 @@ img{
     row-gap: 6rem;
 }
 .about__description{
+    margin-left: 2rem;
     margin-bottom: 5rem;
 }
 .about__card{
