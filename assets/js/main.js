@@ -37,6 +37,131 @@ function scrollHeader(){
 }
 window.addEventListener('scroll', scrollHeader)
 
+/*=============== CART ===============*/
+let cartIcon = document.querySelector("#cart-icon");
+let cart = document.querySelector(".cart");
+let closeCart = document.querySelector("#close-cart");
+
+cartIcon.onclick = () => {
+    cart.classList.add("active");
+};
+
+closeCart.onclick = () => {
+    cart.classList.remove("active");
+};
+
+/* Cart Working JS*/
+if (document.readyState == 'loading'){
+    document.addEventListener("DOMContentLoaded", ready);
+}else{
+    ready();
+}
+
+/* Making Fuction */
+
+function ready(){
+    //Remove items
+    var removeCartButtons = document.getElementsByClassName("cart__remove");
+    console.log(removeCartButtons);
+    for (var i = 0; i < removeCartButtons.length; i++){
+        var button = removeCartButtons[i];
+        button.addEventListener("click", removeCartItem);
+    }
+    /*Quantity Changes */
+    var quantityInputs = document.getElementsByClassName("cart__quantity");
+    for (var i = 0; i < quantityInputs.length; i++){
+        var input = quantityInputs[i];
+        input.addEventListener("change", quantityChanged);
+    }
+
+    /* Add to Cart*/
+    var addCart = document.getElementsByClassName("add-cart");
+    for (var i = 0; i < addCart.length; i++){
+        var button = addCart[i];
+        button.addEventListener("click", addCartClicked);
+    } 
+    /* Buy Button Work */
+    document.getElementsByClassName("button_buy")[0].addEventListener("click", buyButtonClicked);
+}
+
+/* Buy Button */
+function buyButtonClicked(){
+    alert("Your Order is placed")
+    var cartContent = document.getElementsByClassName("cart-content")[0];
+    while (cartContent.hasChildNodes()){
+        cartContent.removeChild(cartContent.firstChild);
+    }
+    updatetotal();
+}
+
+
+//Remove items
+function removeCartItem(event){
+    var buttonClicked = event.target;
+    buttonClicked.parentElement.remove();
+    updatetotal();
+}
+/* Quantity Changes */
+function quantityChanged(event){
+    var input = event.target;
+    if(isNaN(input.value) || input.value <=0){
+        input.value = 1;
+    }
+    updatetotal();
+}
+/* Add To Cart */
+function addCartClicked(event){
+    var button = event.target;
+    var shopProducts = button.parentElement;
+    var title = shopProducts.getElementsByClassName("models_model")[0].innerText;
+    var price = 699.90;
+    var productImg = shopProducts.getElementsByClassName("models-img")[0].src;
+    addProductToCart(title, price, productImg);
+    updatetotal();
+}
+function addProductToCart(title, price, productImg) {
+    var cartShopBox = document.createElement("div");
+    cartShopBox.classList.add("cart-box");
+    var cartItems = document.getElementsByClassName("cart-content")[0];
+    var cartBoxContent = `
+        <img src="${productImg}" alt="" class="cart__img">
+        <div class="detail__box">
+            <div class="cart-product-title">${title}</div>
+            <div class="cart__price">R$${price.toFixed(2)}</div>
+            <input type="number" value="1" class="cart__quantity">
+        </div>
+        <i class="ri-delete-bin-fill cart__remove"></i>`;
+    cartShopBox.innerHTML = cartBoxContent;
+    cartItems.append(cartShopBox);
+
+    cartShopBox.getElementsByClassName("cart__remove")[0].addEventListener("click", removeCartItem);
+    cartShopBox.getElementsByClassName("cart__quantity")[0].addEventListener("change", quantityChanged);
+
+    updatetotal();
+}
+
+
+/* Update Total */
+
+function updatetotal(){
+    var cartContent = document.getElementsByClassName("cart-content")[0];
+    var cartBoxes = cartContent.getElementsByClassName("cart-box");
+    var total = 0;
+    for (var i = 0; i < cartBoxes.length; i++){
+        var cartBox = cartBoxes[i];
+        var priceElement = cartBox.getElementsByClassName("cart__price")[0];
+        var quantityElement = cartBox.getElementsByClassName("cart__quantity")[0];
+        var price = parseFloat(priceElement.innerText.replace("R$",""))
+        var quantity = quantityElement.value;
+        total= total + (price * quantity);
+    }
+    /*If price Contain some Cents Value*/
+    total = Math.round(total *100) / 100;
+
+    document.getElementsByClassName("total__price")[0].innerText = 'R$' + total;
+}
+
+
 /*==================== SHOW SCROLL UP ====================*/ 
 function scrollUp(){
     const scrollUp = document.getElementById('scroll-up');
@@ -64,6 +189,7 @@ function scrollActive(){
     })
 }
 window.addEventListener('scroll', scrollActive)
+
 
 /*=============== SWIPER ===============*/
 let swiperModels = new Swiper('.models__swiper', {
