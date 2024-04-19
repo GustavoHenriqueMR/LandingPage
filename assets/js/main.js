@@ -1,43 +1,43 @@
-/*=============== SHOW MENU ===============*/
+/*=============== MOSTRAR MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
       navClose = document.getElementById('nav-close')
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
+/*===== MOSTRAR MENU =====*/
+/* Validar se a constante existe */
 if(navToggle){
     navToggle.addEventListener('click', () =>{
         navMenu.classList.add('show-menu')
     })
 }
 
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
+/*===== MENU OCULTO =====*/
+/* Validar se a constante existe */
 if(navClose){
     navClose.addEventListener('click', () =>{
         navMenu.classList.remove('show-menu')
     })
 }
 
-/*=============== REMOVE MENU MOBILE ===============*/
+/*=============== REMOVER MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction(){
     const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
+    // Quando clicamos em cada nav__link, removemos a classe show-menu
     navMenu.classList.remove('show-menu')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
-/*=============== CHANGE BACKGROUND HEADER ===============*/
+/*=============== ALTERAR CABEÇALHO DE FUNDO ===============*/
 function scrollHeader(){
     const header = document.getElementById('header')
-    // When the scroll is greater than 50 viewport height, add the scroll-header class to the header tag
+    // Quando a rolagem for maior que 50 de altura da janela de visualização, adicione a classe scroll-header à tag de cabeçalho
     if(this.scrollY >= 50) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
 
-/*=============== CART ===============*/
+/*=============== CARRINHO ===============*/
 let cartIcon = document.querySelector("#cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector("#close-cart");
@@ -50,41 +50,41 @@ closeCart.onclick = () => {
     cart.classList.remove("active");
 };
 
-/* Cart Working JS*/
+/* Carrinho Working JS*/
 if (document.readyState == 'loading'){
     document.addEventListener("DOMContentLoaded", ready);
 }else{
     ready();
 }
 
-/* Making Fuction */
+/* Fazendo Função */
 
 function ready(){
-    //Remove items
+    //Remover itens
     var removeCartButtons = document.getElementsByClassName("cart__remove");
     console.log(removeCartButtons);
     for (var i = 0; i < removeCartButtons.length; i++){
         var button = removeCartButtons[i];
         button.addEventListener("click", removeCartItem);
     }
-    /*Quantity Changes */
+    /*Alterações de quantidade */
     var quantityInputs = document.getElementsByClassName("cart__quantity");
     for (var i = 0; i < quantityInputs.length; i++){
         var input = quantityInputs[i];
         input.addEventListener("change", quantityChanged);
     }
 
-    /* Add to Cart*/
+    /* Adicionar ao carrinho */
     var addCart = document.getElementsByClassName("add-cart");
     for (var i = 0; i < addCart.length; i++){
         var button = addCart[i];
         button.addEventListener("click", addCartClicked);
     } 
-    /* Buy Button Work */
+    /* Funcionamento do botão comprar */
     document.getElementsByClassName("button_buy")[0].addEventListener("click", buyButtonClicked);
 }
 
-/* Buy Button */
+/* Botão Comprar */
 function buyButtonClicked(){
     alert("Your Order is placed")
     var cartContent = document.getElementsByClassName("cart-content")[0];
@@ -95,13 +95,13 @@ function buyButtonClicked(){
 }
 
 
-//Remove items
+//Remover itens
 function removeCartItem(event){
     var buttonClicked = event.target;
     buttonClicked.parentElement.remove();
     updatetotal();
 }
-/* Quantity Changes */
+/* Alterações de quantidade */
 function quantityChanged(event){
     var input = event.target;
     if(isNaN(input.value) || input.value <=0){
@@ -109,7 +109,7 @@ function quantityChanged(event){
     }
     updatetotal();
 }
-/* Add To Cart */
+/* Adicionar ao carrinho */
 function addCartClicked(event){
     var button = event.target;
     var shopProducts = button.parentElement;
@@ -141,7 +141,7 @@ function addProductToCart(title, price, productImg) {
 }
 
 
-/* Update Total */
+/* Atualizar total */
 
 function updatetotal(){
     var cartContent = document.getElementsByClassName("cart-content")[0];
@@ -155,7 +155,7 @@ function updatetotal(){
         var quantity = quantityElement.value;
         total= total + (price * quantity);
     }
-    /*If price Contain some Cents Value*/
+    /*Se o preço contiver alguns centavos no valor*/
     total = Math.round(total *100) / 100;
 
     document.getElementsByClassName("total__price")[0].innerText = 'R$' + total;
@@ -165,12 +165,12 @@ function updatetotal(){
 /*==================== SHOW SCROLL UP ====================*/ 
 function scrollUp(){
     const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 200 viewport height, add the show-scroll class to the a tag with the scroll-top class
+    // Quando a rolagem for superior a 200 altura da janela de visualização, adicione a classe show-scroll à tag a com a classe scroll-top
     if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
 }
 window.addEventListener('scroll', scrollUp)
 
-/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+/*=============== VER SEÇÃO ATIVA ===============*/
 const sections = document.querySelectorAll('section[id]')
 
 function scrollActive(){
