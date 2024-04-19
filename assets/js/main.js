@@ -86,7 +86,7 @@ function ready(){
 
 /* Botão Comprar */
 function buyButtonClicked(){
-    alert("Your Order is placed")
+    alert("Seu Pedido foi realizado com sucesso")
     var cartContent = document.getElementsByClassName("cart-content")[0];
     while (cartContent.hasChildNodes()){
         cartContent.removeChild(cartContent.firstChild);
